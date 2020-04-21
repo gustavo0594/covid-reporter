@@ -1,0 +1,30 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ country }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="confirmed" checked>
+      Confirmed
+    </ion-segment-button>
+    <ion-segment-button value="recovered">
+      Recovered
+    </ion-segment-button>
+    <ion-segment-button value="deaths">
+      Deaths
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list>
+    <ion-item *ngFor="let country of countryDetails" [detail]="false">
+      <ion-label>{{ country.Date }}</ion-label>
+      <ion-note slot="end">{{ country.Cases }}</ion-note>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

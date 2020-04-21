@@ -8,6 +8,14 @@ const routes: Routes = [
     path: 'message/:id',
     loadChildren: () => import('./view-message/view-message.module').then( m => m.ViewMessagePageModule)
   },
+  {
+    path: 'country-detail/:slug/:country',
+    loadChildren: () => import('./country-detail/country-detail.module').then( m => m.CountryDetailPageModule)
+  },
+  {
+    path: 'cases',
+    loadChildren: () => import('./cases/cases.module').then( m => m.CasesPageModule)
+  },
 ];
 
 @NgModule({

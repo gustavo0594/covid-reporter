@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CovidReporter</string>
+    <string name="title_activity_main">CovidReporter</string>
+    <string name="package_name">com.gustavo.covid</string>
+    <string name="custom_url_scheme">com.gustavo.covid</string>
+</resources>

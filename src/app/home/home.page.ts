@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService, Message } from '../services/data.service';
+import { CountryService, Country } from '../services/country.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +7,14 @@ import { DataService, Message } from '../services/data.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  constructor(private data: DataService) {}
+  countries: Country[];
+  countriesData: Country[];
+
+  constructor(private service: CountryService) { }
+
+  ngOnInit() {
+    this.getCountries()
+  }
 
   refresh(ev) {
     setTimeout(() => {
@@ -15,8 +22,14 @@ export class HomePage {
     }, 3000);
   }
 
-  getMessages(): Message[] {
-    return this.data.getMessages();
+  getCountries() {
+    this.service.getCountries().subscribe((countries: Country[]) => {
+      this.countries = countries;
+      this.countriesData = countries
+    });
   }
 
+  onSearch(ev) {
+    this.countries = this.countriesData.filter((country) => country.Country.includes(ev.detail.value))
+  }
 }
